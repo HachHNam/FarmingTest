@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
-        
-
     }
 
     void Move()

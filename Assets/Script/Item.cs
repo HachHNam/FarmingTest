@@ -11,6 +11,16 @@ public class Item : ScriptableObject
     public GameObject obj;
     public TileBase tile;
     public Vector2Int range;
-    [Header("UI")] public bool stackable;
-    [Header("Sprite")] public Sprite _sprite; 
+    public ItemType type;
+    [Header("UI")] 
+    public bool stackable;
+    [Header("Sprite")] 
+    public Sprite _sprite; 
+    
+    public enum ItemType
+    {
+        Plant,
+        Tool    
+    }
+    
 }

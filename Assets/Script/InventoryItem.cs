@@ -8,16 +8,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     // Start is called before the first frame update
     public Image image;
-    public static bool cancel;
-    //[HideInInspector] public Item item;
+    public static bool cancel; 
+    public Item item;
     [HideInInspector] public Transform parentAfterDrag;
 
-   /* public void InitialiseItem(Item newItem)
+    public void InitialiseItem(Item newItem)
     {
         item = newItem;
         image.sprite = newItem._sprite;
         
-    }*/
+    }
     
     public void OnBeginDrag(PointerEventData eventData)
     {
