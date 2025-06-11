@@ -25,6 +25,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
+        InventoryManager.Instance.Cancel();
+        
     }
 
     public void OnDrag(PointerEventData eventData)

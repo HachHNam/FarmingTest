@@ -9,47 +9,59 @@ public class PlacementSystem : Singleton<PlacementSystem>
     [SerializeField] private GameObject mouseIndicator, cellIndicator;
     [SerializeField] private MouseManager mouseManager;
     [SerializeField] private Grid grid;
-    [SerializeField] private Tilemap tileMap;
+    [SerializeField] private GameObject tileMapGO;
+    [SerializeField] private TileBase occupyTile;
+    private Tilemap tile_Map;
     public GameObject[] farmingGrid;
-    public TileBase tile;
-    private SpriteRenderer cellSprite;
+    public Color previewColor;
+    public bool canPreview = true;
+    //public TileBase tile;
+    private GameObject cellSprite;
+    public GameObject previewObj;
+    //public GameObject testPref;
+    List<Vector3Int> occupied = new List<Vector3Int>();
+
+
 
     private void Start()
     {
-        cellSprite = cellIndicator.GetComponent<SpriteRenderer>();
+        tile_Map = tileMapGO.GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
-    public void StartPlacing()
+    public void StartPlacing(Item item)
     {
         for (int i = 0; i < farmingGrid.Length; i++)
         {
             farmingGrid[i].SetActive(true);
         }
+        tileMapGO.SetActive(true);
         Vector3 mousePosition = mouseManager.GetSelectedMapPosition();
-        if(mousePosition != Vector3.zero)
+        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+        if(mousePosition != Vector3.zero &&!occupied.Contains(gridPosition))
         {
-            Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-            if (!tileMap.HasTile(gridPosition))
-            {
-                mouseIndicator.transform.position = mousePosition;
-                cellIndicator.transform.position = grid.GetCellCenterWorld(gridPosition);
-                cellSprite.enabled = true;
-                if(Input.GetMouseButtonDown(0))
-                {
-                    tileMap.SetTile(gridPosition, tile);
-                }
-            }
-            else
-            {
-                cellSprite.enabled = false;
-            }
-            
+          if(canPreview)
+           {
+                canPreview = false;
+                PreparePreview(item);
+           }
+          UpdatePreview(gridPosition);
+          if(Input.GetMouseButtonDown(0))
+           {
+                Instantiate(item.obj, grid.GetCellCenterWorld(gridPosition), Quaternion.identity);
+                tile_Map.SetTile(gridPosition, occupyTile);
+                occupied.Add(gridPosition);
+                CancelPreview();
+           }
+        }
+        else
+        {
+           CancelPreview();
         }
     }
 
@@ -59,7 +71,32 @@ public class PlacementSystem : Singleton<PlacementSystem>
         {
             farmingGrid[i].SetActive(false);
         }
-        cellSprite.enabled = false;
+        CancelPreview();
+        tileMapGO.SetActive(false);
     }
 
+    public void PreparePreview(Item item)
+    {
+        CancelPreview();
+        cellSprite = Instantiate(cellIndicator);
+        previewObj = Instantiate(item.obj);  
+    }
+
+
+    public void UpdatePreview(Vector3Int gridPosition)
+    {
+        SpriteRenderer sr = previewObj.GetComponent<SpriteRenderer>();
+        sr.color = previewColor;
+        cellSprite.transform.position = grid.GetCellCenterWorld(gridPosition);
+        previewObj.transform.position = grid.GetCellCenterWorld(gridPosition);
+        
+    }
+
+    public void CancelPreview()
+    {
+        Destroy(previewObj);
+        Destroy(cellSprite);
+        canPreview = true;
+    }
 }
+

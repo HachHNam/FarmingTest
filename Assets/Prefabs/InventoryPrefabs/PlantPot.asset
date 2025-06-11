@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e0c6156b401ed4a9d5e09da77910f9, type: 3}
   m_Name: PlantPot
   m_EditorClassIdentifier: 
-  obj: {fileID: 30164882783321803, guid: 047549e264a3c1b4fbbf17ec67c3c301, type: 3}
+  obj: {fileID: 5489075545269579598, guid: abeb44be615caeb4aac576fc16a8a736, type: 3}
   tile: {fileID: 11400000, guid: 92c6bda65728322409bb03e053091059, type: 2}
   range: {x: 0, y: 0}
   type: 0

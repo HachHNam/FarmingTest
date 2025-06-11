@@ -16,7 +16,9 @@ public class MouseManager : MonoBehaviour
         if (hit)
         {
             lastPosition = hit.point;
-            
+        }
+        else{
+            lastPosition = Vector3.zero;
         }
         return lastPosition;
     }

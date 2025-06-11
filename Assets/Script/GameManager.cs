@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +19,13 @@ public class GameManager : Singleton<GameManager>
         {
             if (item.type == Item.ItemType.Plant)
             {
-                PlacementSystem.Instance.StartPlacing();
-                PlacementSystem.Instance.tile = item.tile;
+                PlacementSystem.Instance.StartPlacing(item);
+               // PlacementSystem.Instance.tile = item.tile;
             }
             else
             {
                 PlacementSystem.Instance.StopPlacing();
+                PlacementSystem.Instance.CancelPreview();
             }
         }
         else
@@ -33,4 +35,5 @@ public class GameManager : Singleton<GameManager>
         }
         
     }
+    
 }

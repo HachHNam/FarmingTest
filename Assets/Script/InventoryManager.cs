@@ -60,6 +60,11 @@ public class InventoryManager : Singleton<InventoryManager>
         }
     }
 
+    public void Cancel()
+    {
+        inventorySlots[selectedSlot].Deselect();
+    }
+   
     public Item GetSelectedItem()
     {
         if (selectedSlot >= 0)
