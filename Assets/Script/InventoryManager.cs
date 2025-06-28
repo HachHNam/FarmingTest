@@ -7,7 +7,8 @@ public class InventoryManager : Singleton<InventoryManager>
 {
     public InventorySlot[] inventorySlots;
     int selectedSlot = -1;
-
+    Item currentItem;
+    
     private void Update()
     {
         if (Input.inputString != null)
@@ -15,7 +16,7 @@ public class InventoryManager : Singleton<InventoryManager>
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < inventorySlots.Length)
             {
-                ChangeSelectedSlot(number - 1);
+                ChangeSelectedSlot(number -1);
             }
         }
     }
@@ -47,16 +48,20 @@ public class InventoryManager : Singleton<InventoryManager>
         if (selectedSlot >= 0)
         {
             inventorySlots[selectedSlot].Deselect();
+           // PlacementSystem.Instance.StopPlacement();
         }
         if (selectedSlot != slotNumber)
         {
             inventorySlots[slotNumber].Select();
             selectedSlot = slotNumber;
+            //currentItem = GetSelectedItem();
+           // PlacementSystem.Instance.StartPlacement(currentItem.ID);
         }
         else
         {
             inventorySlots[selectedSlot].Deselect();
             selectedSlot = -1;
+            //PlacementSystem.Instance.StopPlacement();
         }
     }
 

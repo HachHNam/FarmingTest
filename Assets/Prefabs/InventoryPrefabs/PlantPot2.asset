@@ -16,5 +16,6 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: ebfd29733292a4e408fe379660cbcf11, type: 2}
   range: {x: 0, y: 0}
   type: 0
+  ID: 1
   stackable: 0
   _sprite: {fileID: 21300000, guid: 694d6d51a58e2764fb2aac00d4e29127, type: 3}

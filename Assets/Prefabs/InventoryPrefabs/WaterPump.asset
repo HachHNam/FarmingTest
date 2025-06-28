@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61e0c6156b401ed4a9d5e09da77910f9, type: 3}
-  m_Name: Pickaxe
+  m_Name: WaterPump
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
   tile: {fileID: 0}
   range: {x: 0, y: 0}
-  type: 1
-  ID: 2
+  type: 0
+  ID: 3
   stackable: 0
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: f549f19e9d6e0524e81a9e7d3d8a4668, type: 3}

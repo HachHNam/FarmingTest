@@ -14,23 +14,28 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        
         Item item = InventoryManager.Instance.GetSelectedItem();
         if (item != null)
         {
             if (item.type == Item.ItemType.Plant)
             {
-                PlacementSystem.Instance.StartPlacing(item);
+                PlacementSystem.Instance.StartPlacement(item.ID);
                // PlacementSystem.Instance.tile = item.tile;
+            }
+            else if (item.type == Item.ItemType.Tool)
+            {
+                PlacementSystem.Instance.StartRemoving();
+                /*PlacementSystem.Instance.CancelPreview();*/
             }
             else
             {
-                PlacementSystem.Instance.StopPlacing();
-                PlacementSystem.Instance.CancelPreview();
+                PlacementSystem.Instance.StopPlacement();
             }
         }
         else
         {
-            PlacementSystem.Instance.StopPlacing();
+            PlacementSystem.Instance.StopPlacement();
             return;
         }
         

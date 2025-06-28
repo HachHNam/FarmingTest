@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,6 +13,7 @@ public class Item : ScriptableObject
     public TileBase tile;
     public Vector2Int range;
     public ItemType type;
+    public int ID;
     [Header("UI")] 
     public bool stackable;
     [Header("Sprite")] 

@@ -26,6 +26,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetAsLastSibling();
         image.raycastTarget = false;
         InventoryManager.Instance.Cancel();
+        PlacementSystem.Instance.StopPlacement();
         
     }
 

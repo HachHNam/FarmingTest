@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8298577869032423088}
   - component: {fileID: 3717723131429723151}
   m_Layer: 5
-  m_Name: Pickaxe
+  m_Name: WaterPump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5842c8f1757cb74ea8b51c22b053599, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f549f19e9d6e0524e81a9e7d3d8a4668, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,5 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 8298577869032423088}
-  item: {fileID: 11400000, guid: fd42f63d51a44624280c31cb61b8e8d2, type: 2}
+  item: {fileID: 11400000, guid: ce00f74f896b30b4d88a0ccec641f686, type: 2}
   parentAfterDrag: {fileID: 0}

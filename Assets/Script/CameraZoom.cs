@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraZoom : MonoBehaviour
 {
-    private float zoom;
+    /*private float zoom;
     public float panMult = 2f;
     private float zoomMultiplier = 10f;
     private float minZoom = 7f;
@@ -51,5 +51,5 @@ public class CameraZoom : MonoBehaviour
              
         }
        
-    }
+    }*/
 }

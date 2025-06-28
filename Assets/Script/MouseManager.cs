@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MouseManager : MonoBehaviour
 {
@@ -8,7 +10,24 @@ public class MouseManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     private Vector3 lastPosition;
     public LayerMask farmLayer;
+
+    public event Action OnClicked, OnExit;
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnClicked?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnExit?.Invoke();
+        }
+    }
     
+    public bool IsPointerOverUI()
+        => EventSystem.current.IsPointerOverGameObject();
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -18,7 +37,7 @@ public class MouseManager : MonoBehaviour
             lastPosition = hit.point;
         }
         else{
-            lastPosition = Vector3.zero;
+            lastPosition = new Vector3(-100,0,0);
         }
         return lastPosition;
     }
